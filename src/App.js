@@ -1,23 +1,18 @@
 import React from 'react';
-import { Button, Row, Col } from 'antd';
-import './App.css';
+import { Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory  } from 'history';
 
+import Home from './components/Home';
 
-const handleClick = () => {
-  alert('Hello World')
-}
+const history = createBrowserHistory();
 
 const App = () => {
   return (
-    <div className="App">
-      <div className="container">
-        <Row type="flex" justify="center">
-            <Col span={24}>
-              <Button type="primary" onClick={handleClick}>Click Me!</Button>
-            </Col>
-        </Row>        
-      </div>
-    </div>
+   <Router history={history}>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+      </Switch>
+   </Router>
   );
 };
 
