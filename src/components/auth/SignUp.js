@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Icon, Input, Button } from 'antd';
-import './auth.css';
+import { Form, Icon, Input, Button, Typography } from 'antd';
+// import './auth.css';
 
-class EmailLogin extends Component {
+const { Title } = Typography;
 
+class SignUp extends Component {
     state = {
         error : {
             message: ''
@@ -25,6 +26,7 @@ class EmailLogin extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="container center">
+      <Title level={2} className="center">Sign Up</Title>
           <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator('username', {
@@ -49,9 +51,9 @@ class EmailLogin extends Component {
           </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
+              Sign Up
             </Button>
-            or <Link to={'/signup'}>New User? Register</Link>
+            or <Link to={'/signin'}>Already a user? Login</Link>
           </Form.Item>
         </Form>
       </div>
@@ -59,6 +61,4 @@ class EmailLogin extends Component {
   }
 }
 
-
-export default Form.create({ name: 'normal_login' })(EmailLogin);
-
+export default Form.create({ name: 'normal_login' })(SignUp);

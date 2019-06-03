@@ -8,6 +8,7 @@
     "core-js": "^3.0.1",
     "customize-cra": "^0.2.12",
     "firebase": "^6.1.0",
+    "firebaseui": "^4.0.0",
     "history": "^4.9.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
