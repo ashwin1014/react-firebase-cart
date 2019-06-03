@@ -1,9 +1,6 @@
-This is a react starter template using Ant Design <br/>
-To install: <br/>
-'cd antd-react-starter-template'<br/>
-then 'npm install'<br/>
-To run: <br/>
-'yarn start' or 'npm start'
-<br/>
-<br/>
-Also included: react-app-rewired and customize-cra to rewire create-react-app
+## React Cart App <br/>
+This app uses React along with Redux for state management, Ant-Design for styles and components, Firebase for authentication and Realtime-Database. <br>
+<br>
+To install `npm install or yarn install` <br>
+To run `npm start or yarn start` <br> <br>
+IF you get an error installing packages, delete package-lock.json and install again
