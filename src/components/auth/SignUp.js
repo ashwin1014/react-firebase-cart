@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { firebaseApp } from '../../config';
+import { Redirect  } from 'react-router-dom';
 import { Form, Icon, Input, Button, Typography } from 'antd';
-// import './auth.css';
 
 const { Title } = Typography;
 
@@ -17,6 +18,13 @@ class SignUp extends Component {
       this.props.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values.username, values.password);
+          firebaseApp.auth().createUserWithEmailAndPassword(values.username, values.password)
+                      .then(()=>{
+                        return <Redirect to='/'/>
+                      })   
+                     .catch(error=>{
+                      this.setState({error})
+                     })       
         }
       });
     };
@@ -56,6 +64,7 @@ class SignUp extends Component {
             or <Link to={'/signin'}>Already a user? Login</Link>
           </Form.Item>
         </Form>
+        <div>{this.state.error.message}</div>
       </div>
     )
   }

@@ -31,7 +31,7 @@ const SignIn = () => {
                 <Title level={2} className="center">Sign In</Title>
                 <EmailLogin/>
                 <div className="center container">                    
-                    <Button type="link" data-type="otp" onClick={handleLoginType}>Login Via OTP insted?</Button>  
+                 <Button type="link" data-type="otp" onClick={handleLoginType}>Login Via OTP insted?</Button>  
                 </div>
               </>
             )

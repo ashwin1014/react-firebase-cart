@@ -8,3 +8,7 @@
 .login-form-button {
     width: 100%;
   }
+  .mdl-button--raised.mdl-button--colored {
+    background: #06c !important;
+    color: #fff;
+}

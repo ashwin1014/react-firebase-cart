@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { firebaseApp } from '../../config';
 import { Form, Icon, Input, Button } from 'antd';
 import './auth.css';
 
@@ -16,6 +17,10 @@ class EmailLogin extends Component {
       this.props.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values.username, values.password);
+          firebaseApp.auth().signInWithEmailAndPassword(values.username, values.password)
+                    .catch(err=> {
+                        this.setState({error: err})
+                    });
         }
       });
     };
