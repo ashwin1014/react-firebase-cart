@@ -27,17 +27,17 @@ class Home extends Component {
   }
 
   handleFilter = (category) => {   
-    let query = recipes.orderByChild('category').equalTo(category);    
-    query.on('value', snapshot => {
-      let items = [];
-      snapshot.forEach(item => {
-          const { category, details, image, isFavourite, name, price, rating, reviews } = item.val();
-          const serverKey = item.key;
-          items.push({serverKey, category, details, image, isFavourite, name, price, rating, reviews});
-      });
-      this.props.getFoodItems(items);     
-      this.setState({category}) 
-    })    
+    let query = category === 'All' ? recipes.orderByChild('category'):recipes.orderByChild('category').equalTo(category);        
+      query.on('value', snapshot => {
+        let items = [];
+        snapshot.forEach(item => {
+            const { category, details, image, isFavourite, name, price, rating, reviews } = item.val();
+            const serverKey = item.key;
+            items.push({serverKey, category, details, image, isFavourite, name, price, rating, reviews});
+        });
+        this.props.getFoodItems(items);   
+        this.setState({category})
+      })           
   };
 
   render() {
@@ -48,7 +48,7 @@ class Home extends Component {
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
               <Icon type="user" />
-              <span>All</span>
+              <span onClick={(e)=>this.handleFilter("All")}>All</span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="video-camera" />
