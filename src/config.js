@@ -39,3 +39,5 @@ export const startFirebaseUI = function (elementId) {
 
 //firebase db reference
 export const recipes = firebase.database().ref('recipes')
+
+//export const recipes = firebase.database().ref('recipes').orderByChild('category').equalTo('Dessert')

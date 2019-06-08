@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import Products from './Products/Products';
 import { Layout, Menu, Icon, Button } from 'antd';
+import { connect } from 'react-redux';
+import { recipes } from '../config';
+import { getFoodItems } from '../redux/actions/index';
 import { firebaseApp } from '../config';
 
 const { Header, Sider, Content } = Layout;
 
 class Home extends Component {
 
+ 
   state = {
-    collapsed: false,
+    collapsed: false,    
+    category: 'All'
   };
 
   toggle = () => {
@@ -21,6 +26,20 @@ class Home extends Component {
     firebaseApp.auth().signOut();
   }
 
+  handleFilter = (category) => {   
+    let query = recipes.orderByChild('category').equalTo(category);    
+    query.on('value', snapshot => {
+      let items = [];
+      snapshot.forEach(item => {
+          const { category, details, image, isFavourite, name, price, rating, reviews } = item.val();
+          const serverKey = item.key;
+          items.push({serverKey, category, details, image, isFavourite, name, price, rating, reviews});
+      });
+      this.props.getFoodItems(items);     
+      this.setState({category}) 
+    })    
+  };
+
   render() {
     return (
      <Layout>
@@ -29,15 +48,19 @@ class Home extends Component {
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
               <Icon type="user" />
-              <span>Dessert</span>
+              <span>All</span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="video-camera" />
-              <span>Starters</span>
+              <span onClick={(e)=>this.handleFilter("Starters")}>Starters</span>
             </Menu.Item>
             <Menu.Item key="3">
               <Icon type="upload" />
-              <span>Drinks</span>
+              <span onClick={(e)=>this.handleFilter("Dessert")}>Dessert</span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <Icon type="upload" />
+              <span  onClick={(e)=>this.handleFilter("Drinks")}>Drinks</span>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -69,5 +92,12 @@ class Home extends Component {
 };
 
 
+const mapStateToProps = (state) => {
+  const { items } = state;
+  return {
+    items
+  }
+};
 
-export default Home ;
+
+export default connect(mapStateToProps, { getFoodItems })(Home) ;

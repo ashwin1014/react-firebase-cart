@@ -8,7 +8,7 @@ import './Products.css';
 
 class Products extends Component {
     componentDidMount() {
-        recipes.on('value', snapshot => {
+        recipes.orderByChild('category').on('value', snapshot => {
           let items = [];
           snapshot.forEach(item => {
               const { category, details, image, isFavourite, name, price, rating, reviews } = item.val();
