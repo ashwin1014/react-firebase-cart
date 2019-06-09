@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { firebaseApp } from './config';
+import { firebaseApp } from './firebase/config';
 import { Switch, Route } from 'react-router-dom';
 import { withRouter } from "react-router";
 // import { connect } from 'react-redux';

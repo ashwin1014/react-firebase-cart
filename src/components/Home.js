@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Products from './Products/Products';
 import { Layout, Menu, Icon, Button } from 'antd';
 import { connect } from 'react-redux';
-import { recipes } from '../config';
 import { getFoodItems } from '../redux/actions/index';
-import { firebaseApp } from '../config';
+import { firebaseApp, recipes } from '../firebase/config';
 
 const { Header, Sider, Content } = Layout;
 

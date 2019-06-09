@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { firebaseApp } from '../../config';
+import { firebaseApp } from '../../firebase/config';
 import { Form, Icon, Input, Button } from 'antd';
 import './auth.css';
 

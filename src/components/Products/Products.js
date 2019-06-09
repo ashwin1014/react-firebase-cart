@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { recipes } from '../../config';
+import { recipes } from '../../firebase/config';
 import { getFoodItems } from '../../redux/actions/index';
 import { Row } from 'antd';
 import ProductItem from './ProductItem';
@@ -22,7 +22,7 @@ class Products extends Component {
   render() {
     return (
       <Row type="flex" justify="start">
-        <div className="container">
+        <div>
         {
           this.props.items && this.props.items.map(item=>{
             return (        

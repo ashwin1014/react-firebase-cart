@@ -17,7 +17,7 @@ const ProductItem = (props) => {
       };
 
     return (
-        <Col lg={{ span: 8}} sm={{ span: 12}} style={{ marginBottom: 30 }}>
+        <Col xs={32} sm={24} md={6} lg={6}  style={{ marginBottom: 30 }}>
             <Card
                 hoverable
                 style={{ width: 300 }}

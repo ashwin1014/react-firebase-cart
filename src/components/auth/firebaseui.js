@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { startFirebaseUI } from '../../config';
+import { startFirebaseUI } from '../../firebase/config';
 import 'firebaseui/dist/firebaseui.css';
 
 const FirebaseUI = () => {
